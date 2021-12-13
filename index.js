@@ -48,15 +48,16 @@ app.get("/users/1", function(req, res){
 
 //returns any user
 // app.get("/users/:_id", function(req, res){
-//   console.log("GET /user/1")
+//   console.log("GET /user/3")
 //   let id = req.params._id
 //   for(let i = 0; i < users.length; i++){
 //     let currentUser = users[i];
 //     let currentUserId = users[i]._id;
 //     if(currentUserId == id){
+        users[i] = input
 //       res.json(currentUser); 
 //     }
-//   }
+//   } 
 //   res.status(400).json({ msg: 'No member with the id of ' + id}); 
 // })
 
@@ -68,11 +69,12 @@ app.post("/users", function(req, res){
   res.json(input);
 })
 //updates the first user with new values inputted to the body
-app.put("/users/1", function(req, res){
-  console.log("PUT /users", req.params._id)
+app.put("/users/:id", function(req, res){
+  console.log("PUT /users", req.params.id)
   let input = req.body;
-  let id = req.params._id;
-  users[id] = input;
+  let id = req.params.id;
+  input._id = id
+  
   res.json(input)
 })
 

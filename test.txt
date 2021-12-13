@@ -1,0 +1,7 @@
+get milk id:1 
+get mini burgers id:2
+get shampoo id:3
+get ripe bananas id:4
+pepporoni pizza id:5
+
+
