@@ -54,7 +54,7 @@ app.get("/users/1", function(req, res){
 //     let currentUser = users[i];
 //     let currentUserId = users[i]._id;
 //     if(currentUserId == id){
-        users[i] = input
+        // users[i] = input
 //       res.json(currentUser); 
 //     }
 //   } 
@@ -69,13 +69,20 @@ app.post("/users", function(req, res){
   res.json(input);
 })
 //updates the first user with new values inputted to the body
-app.put("/users/:id", function(req, res){
-  console.log("PUT /users", req.params.id)
-  let input = req.body;
-  let id = req.params.id;
-  input._id = id
-  
-  res.json(input)
+app.put("/users/:_id", function (req, res) {
+  console.log("PUT /users", req.params._id)
+  const id = req.params._id;
+
+  for (let i = 0; i < users.length; i++) {
+    let currentUser = users[i];
+    let currentUserId = users[i]._id;
+    if (currentUserId == id) {
+      const foundMember = currentUser;
+      foundMember.occupation = req.body.occupation;
+      foundMember.name = req.body.name;
+      res.json({ msg: 'member found and updated', foundMember })
+    }
+  }
 })
 
 //deletes the first object in our array
